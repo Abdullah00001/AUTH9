@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import AuthContext from '../contexts/authContext';
-import { checkAuth, signupUser } from '../apis/auth.apis';
+import { checkAuth, refreshTokens, signupUser } from '../apis/auth.apis';
 import { ResetErrorMessage } from '../utils/authProvider.utils';
 
 const AuthProvider = ({ children }) => {
@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
   const [confirmPasswordFieldError, setConfirmPasswordFieldError] =
     useState(null);
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(true);
   const [successMessage, setSuccessMessage] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [isFormValid, setIsFormValid] = useState(null);
@@ -50,26 +50,35 @@ const AuthProvider = ({ children }) => {
       setLoading(false);
     }
   };
-  useEffect(()=>{
-    (async()=>{
+  useEffect(() => {
+    const auth = async () => {
+      setLoading(true);
       try {
-        const response=await checkAuth()
-        const status = response.status;
-        if(status===200){
-          setUser(true)
+        const response = await checkAuth();
+        const status = response?.status;
+        if (status === 200) {
+          setUser(true);
         }
       } catch (error) {
-        const status = error.status;
-        if(status===401){
+        const status = error?.status;
+        if (status === 401) {
           try {
-            
+            const response = await refreshTokens();
+            const status = response?.status;
+            if (status === 200) {
+              setUser(true);
+            }
           } catch (error) {
-            
+            setUser(false);
           }
         }
+        setUser(false);
+      } finally {
+        setLoading(false);
       }
-    })()
-  },[])
+    };
+    auth();
+  }, []);
   const providersValues = {
     firstNameFieldError,
     lastNameFieldError,

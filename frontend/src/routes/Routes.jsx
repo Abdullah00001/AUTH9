@@ -6,15 +6,24 @@ import ProtectedVerifyPage from '../components/Protected/ProtectedVerifyPage';
 import AppLayout from '../layouts/AppLayout';
 import Home from '../pages/Home/Home';
 import ProtectedAuth from '../components/Protected/ProtectedAuth';
+import ProtectedRoute from '../components/Protected/ProtectedRoute';
 
 const Routes = createBrowserRouter([
   {
     path: '/auth/login',
-    element: <Login />,
+    element: (
+      <ProtectedRoute>
+        <Login />
+      </ProtectedRoute>
+    ),
   },
   {
     path: '/auth/signup',
-    element: <Signup />,
+    element: (
+      <ProtectedRoute>
+        <Signup />
+      </ProtectedRoute>
+    ),
   },
   {
     path: '/auth/verify',

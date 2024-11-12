@@ -1,10 +1,11 @@
-import { Navigate, useLocation } from 'react-router-dom';
+import React from 'react';
 import useAuthContext from '../../hooks/useAuthContext';
+import { Navigate, useLocation } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
 
-const ProtectedAuth = ({ children }) => {
-  const location = useLocation();
+const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuthContext();
+  const location = useLocation();
   if (loading) {
     return (
       <div className='flex justify-center items-center h-screen'>
@@ -22,8 +23,8 @@ const ProtectedAuth = ({ children }) => {
       </div>
     );
   }
-  if (user) return children;
-  return <Navigate state={location.pathname} to={'/auth/login'} />;
+  if (!user) return children;
+  return <Navigate state={location.pathname} to={'/'} />;
 };
 
-export default ProtectedAuth;
+export default ProtectedRoute;
