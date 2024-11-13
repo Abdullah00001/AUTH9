@@ -24,12 +24,20 @@ const checkAuth = async () => {
   }
 };
 
-const RefreshTokens=async()=>{
+const refreshTokens = async () => {
   try {
-    
+    return await axiosInstance.post('/user/refreshtokens', {});
   } catch (error) {
-    throw error
+    throw error;
   }
-}
+};
 
-export { signupUser, verifyEmail, checkAuth };
+const loginUser = async userData => {
+  try {
+    return await axiosInstance.post('/user/login', userData);
+  } catch (error) {
+    throw error;
+  }
+};
+
+export { signupUser, verifyEmail, checkAuth, refreshTokens,loginUser };

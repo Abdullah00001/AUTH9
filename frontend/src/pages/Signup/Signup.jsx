@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import SignupForm from '../../features/Authentication/Signup/components/SignupForm';
 import useAuthContext from '../../hooks/useAuthContext';
 import SetFieldError from '../../features/Authentication/Signup/helpers/SetFieldErrors';
@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const navigate = useNavigate();
+  const [data, setData] = useState({});
   const {
     successMessage,
     errorMessage,
@@ -46,10 +47,15 @@ const Signup = () => {
       const lastName = e.target.lastName.value.toLowerCase();
       const email = e.target.email.value.toLowerCase();
       const password = e.target.password.value.toLowerCase();
-      signup({ firstName, lastName, email, password });
+      setData({ firstName, lastName, email, password });
     }
     return;
   };
+  useEffect(() => {
+    if (data.firstName && data.lastName && data.email && data.password) {
+      signup(data);
+    }
+  }, [data]);
   useEffect(() => {
     if (successMessage) {
       toast.success(successMessage);
@@ -64,7 +70,7 @@ const Signup = () => {
   return (
     <>
       <Helmet>
-        <title>Signup</title>
+        <title>Postbook | Signup</title>
       </Helmet>
       <section className='font-open_sans'>
         <Toaster position='top-center' reverseOrder={false} />
@@ -74,7 +80,7 @@ const Signup = () => {
               <h1 className='text-2xl font-bold mb-4'>
                 Join the Postbook Community
               </h1>
-              <p className='text-md mb-6'>Connect, Share, and Grow with Us.</p>
+              <p className='text-xl mb-6'>Connect, Share, and Grow with Us.</p>
             </div>
             {errorMessage && (
               <div
