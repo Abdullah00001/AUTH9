@@ -10,8 +10,8 @@ const AuthProvider = ({ children }) => {
   const [passwordFieldError, setPasswordFieldError] = useState(null);
   const [confirmPasswordFieldError, setConfirmPasswordFieldError] =
     useState(null);
-  const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState(true);
+  const [loading, setLoading] = useState(null);
+  const [user, setUser] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [isFormValid, setIsFormValid] = useState(null);
@@ -78,7 +78,7 @@ const AuthProvider = ({ children }) => {
       }
     };
     auth();
-  }, []);
+  }, [user]);
   const providersValues = {
     firstNameFieldError,
     lastNameFieldError,
