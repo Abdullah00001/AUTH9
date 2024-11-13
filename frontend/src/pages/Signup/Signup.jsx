@@ -64,7 +64,7 @@ const Signup = () => {
   return (
     <>
       <Helmet>
-        <title>Signup</title>
+        <title>Postbook | Signup</title>
       </Helmet>
       <section className='font-open_sans'>
         <Toaster position='top-center' reverseOrder={false} />

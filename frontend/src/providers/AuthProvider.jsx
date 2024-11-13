@@ -94,7 +94,6 @@ const AuthProvider = ({ children }) => {
   };
   useEffect(() => {
     const auth = async () => {
-      if (user === null) return;
       setLoading(true);
       try {
         const response = await checkAuth();

@@ -7,26 +7,27 @@ import { useEffect } from 'react';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { successMessage } = useAuthContext();
+  const { successMessage, setUser } = useAuthContext();
   useEffect(() => {
     if (successMessage) {
       toast.success(successMessage);
       const delayNavigate = setTimeout(() => {
+        setUser(true);
         navigate('/');
       }, 2500);
       return () => {
         clearTimeout(delayNavigate);
       };
     }
-  }, [successMessage, navigate]);
+  }, [navigate, successMessage]);
   return (
     <>
       <Helmet>
         <title>Postbook | Login</title>
       </Helmet>
       <section>
+        <Toaster position='top-center' reverseOrder={false} />
         <div className='flex justify-center items-center h-[80vh]'>
-          <Toaster position='top-center' reverseOrder={false} />
           <LoginComponent />
         </div>
       </section>
