@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
 import AuthContext from '../contexts/authContext';
-import { checkAuth, refreshTokens, signupUser } from '../apis/auth.apis';
+import {
+  checkAuth,
+  loginUser,
+  refreshTokens,
+  signupUser,
+} from '../apis/auth.apis';
 import { ResetErrorMessage } from '../utils/authProvider.utils';
 
 const AuthProvider = ({ children }) => {
@@ -48,6 +53,28 @@ const AuthProvider = ({ children }) => {
       }
     } finally {
       setLoading(false);
+    }
+  };
+  const login = async userData => {
+    setLoading(true);
+    try {
+      const response = await loginUser(userData);
+      const status = response.status;
+      const message = response.data.message;
+      if (status === 200) {
+        setSuccessMessage(message);
+      }
+    } catch (error) {
+      const status=error.status
+      const message = error.response.data.message;
+      switch(status){
+        case(400):{
+          setErrorMessage(message)
+        }
+        case(401):{
+          setErrorMessage(message)
+        }
+      }
     }
   };
   useEffect(() => {

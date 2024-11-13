@@ -32,4 +32,12 @@ const refreshTokens = async () => {
   }
 };
 
-export { signupUser, verifyEmail, checkAuth, refreshTokens };
+const loginUser = async userData => {
+  try {
+    return await axiosInstance.post('/user/login', userData);
+  } catch (error) {
+    throw error;
+  }
+};
+
+export { signupUser, verifyEmail, checkAuth, refreshTokens,loginUser };
