@@ -65,20 +65,36 @@ const AuthProvider = ({ children }) => {
         setSuccessMessage(message);
       }
     } catch (error) {
-      const status=error.status
+      const status = error.status;
       const message = error.response.data.message;
-      switch(status){
-        case(400):{
-          setErrorMessage(message)
+      switch (status) {
+        case 400: {
+          setErrorMessage(message);
+          break;
         }
-        case(401):{
-          setErrorMessage(message)
+        case 401: {
+          setErrorMessage(message);
+          break;
+        }
+        case 403: {
+          setErrorMessage(message);
+          break;
+        }
+        case 500: {
+          setErrorMessage(message);
+          break;
+        }
+        default: {
+          setErrorMessage('An unknown error occurred. Please try again.');
         }
       }
+    } finally {
+      setLoading(false);
     }
   };
   useEffect(() => {
     const auth = async () => {
+      if (user === null) return;
       setLoading(true);
       try {
         const response = await checkAuth();
@@ -117,6 +133,7 @@ const AuthProvider = ({ children }) => {
     successMessage,
     errorMessage,
     isFormValid,
+    login,
     setIsFormValid,
     signup,
     setErrorMessage,

@@ -74,7 +74,7 @@ const Signup = () => {
               <h1 className='text-2xl font-bold mb-4'>
                 Join the Postbook Community
               </h1>
-              <p className='text-md mb-6'>Connect, Share, and Grow with Us.</p>
+              <p className='text-xl mb-6'>Connect, Share, and Grow with Us.</p>
             </div>
             {errorMessage && (
               <div
