@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import useAuthContext from '../../../../hooks/useAuthContext';
 import Email from '../../components/Email';
 import Password from '../../components/Password';
@@ -6,6 +7,7 @@ import resetErrors from '../helper/resetErrors';
 import setErrors from '../helper/setErrors';
 
 const LoginForm = () => {
+  const [data, setData] = useState({});
   const {
     loading,
     login,
@@ -21,9 +23,14 @@ const LoginForm = () => {
     if (isFormValid && !loading) {
       const email = e.target.email.value.toLowerCase();
       const password = e.target.password.value.toLowerCase();
-      login({ email, password });
+      setData({ email, password });
     }
   };
+  useEffect(() => {
+    if (data.email && data.password) {
+      login(data);
+    }
+  }, [data, login]);
   return (
     <form onSubmit={handleLogin}>
       <div className='flex flex-col gap-4'>
