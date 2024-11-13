@@ -117,8 +117,8 @@ const isVerifiedUser = async (req, res, next) => {
     const user = req.user;
     if (!user.isVerified)
       return res
-        .status(400)
-        .json(new errorApiResponse(400, 'User In Not Verified', null));
+        .status(403)
+        .json(new errorApiResponse(403, 'User In Not Verified', null));
     if (user.isVerified) next();
   } catch (error) {
     console.log(error);
