@@ -6,7 +6,7 @@ import { RotatingLines } from 'react-loader-spinner';
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuthContext();
   const location = useLocation();
-  if (loading) {
+  /* if (loading) {
     return (
       <div className='flex justify-center items-center h-screen'>
         <RotatingLines
@@ -22,7 +22,14 @@ const ProtectedRoute = ({ children }) => {
         />
       </div>
     );
-  }
+  } */
+  /* if (loading) {
+    return (
+      <div className='flex justify-center items-center h-screen'>
+        <h1 className='text-3xl'>Loading...</h1>
+      </div>
+    );
+  } */
   if (!user) return children;
   return <Navigate state={location.pathname} to={'/'} />;
 };

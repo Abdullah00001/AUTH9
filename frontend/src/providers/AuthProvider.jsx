@@ -20,6 +20,7 @@ const AuthProvider = ({ children }) => {
   const [successMessage, setSuccessMessage] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [isFormValid, setIsFormValid] = useState(null);
+  
   const signup = async userData => {
     setLoading(true);
     ResetErrorMessage({ setErrorMessage, setSuccessMessage });
@@ -55,6 +56,7 @@ const AuthProvider = ({ children }) => {
       setLoading(false);
     }
   };
+
   const login = async userData => {
     setLoading(true);
     try {
@@ -92,6 +94,7 @@ const AuthProvider = ({ children }) => {
       setLoading(false);
     }
   };
+
   useEffect(() => {
     const auth = async () => {
       setLoading(true);

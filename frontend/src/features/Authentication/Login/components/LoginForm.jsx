@@ -30,7 +30,7 @@ const LoginForm = () => {
     if (data.email && data.password) {
       login(data);
     }
-  }, [data, login]);
+  }, [data]);
   return (
     <form onSubmit={handleLogin}>
       <div className='flex flex-col gap-4'>

@@ -5,7 +5,7 @@ import { RotatingLines } from 'react-loader-spinner';
 const ProtectedAuth = ({ children }) => {
   const location = useLocation();
   const { user, loading } = useAuthContext();
-  if (loading) {
+  /* if (loading) {
     return (
       <div className='flex justify-center items-center h-screen'>
         <RotatingLines
@@ -21,7 +21,14 @@ const ProtectedAuth = ({ children }) => {
         />
       </div>
     );
-  }
+  } */
+  /* if (loading) {
+    return (
+      <div className='flex justify-center items-center h-screen'>
+        <h1 className='text-3xl'>Loading...</h1>
+      </div>
+    );
+  } */
   if (user) return children;
   return <Navigate state={location.pathname} to={'/auth/login'} />;
 };

@@ -19,7 +19,7 @@ const Login = () => {
         clearTimeout(delayNavigate);
       };
     }
-  }, [navigate, successMessage]);
+  }, [successMessage, navigate]);
   return (
     <>
       <Helmet>

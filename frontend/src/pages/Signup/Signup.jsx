@@ -55,7 +55,7 @@ const Signup = () => {
     if (data.firstName && data.lastName && data.email && data.password) {
       signup(data);
     }
-  }, [data, signup]);
+  }, [data]);
   useEffect(() => {
     if (successMessage) {
       toast.success(successMessage);
