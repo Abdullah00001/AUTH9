@@ -4,6 +4,7 @@ import { RouterProvider } from 'react-router-dom';
 import Routes from './routes/Routes';
 import AuthProvider from './providers/AuthProvider';
 import VerifyOtpProvider from './providers/VerifyOtpProvider';
+import RecoverAccountProvider from './providers/RecoverAccountProvider';
 
 function App() {
   return (
@@ -11,7 +12,9 @@ function App() {
       <HelmetProvider>
         <AuthProvider>
           <VerifyOtpProvider>
-            <RouterProvider router={Routes}></RouterProvider>
+            <RecoverAccountProvider>
+              <RouterProvider router={Routes}></RouterProvider>
+            </RecoverAccountProvider>
           </VerifyOtpProvider>
         </AuthProvider>
       </HelmetProvider>

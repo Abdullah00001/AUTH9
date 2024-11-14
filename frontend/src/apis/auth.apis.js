@@ -51,6 +51,14 @@ const findUser = async userData => {
   }
 };
 
+const sentOtp=async userData=>{
+  try {
+    return await axiosInstance.post('/user/forgot-password/sent-otp',userData)
+  } catch (error) {
+    throw error
+  }
+}
+
 export {
   signupUser,
   verifyEmail,
@@ -58,4 +66,5 @@ export {
   refreshTokens,
   loginUser,
   findUser,
+  sentOtp
 };

@@ -8,6 +8,9 @@ import Home from '../pages/Home/Home';
 import ProtectedAuth from '../components/Protected/ProtectedAuth';
 import ProtectedRoute from '../components/Protected/ProtectedRoute';
 import ForgotPassword from '../pages/Forgot Password/ForgotPassword';
+import UserFound from '../pages/Forgot Password/UserFound';
+import ProtectedRecoverRoute from '../components/Protected/ProtectedRecoverRoute';
+import VerifyCode from '../pages/Forgot Password/VerifyCode';
 
 const Routes = createBrowserRouter([
   {
@@ -40,6 +43,22 @@ const Routes = createBrowserRouter([
       <ProtectedRoute>
         <ForgotPassword />
       </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/auth/recover/:useremail',
+    element: (
+      <ProtectedRecoverRoute>
+        <UserFound />
+      </ProtectedRecoverRoute>
+    ),
+  },
+  {
+    path: '/auth/recover/verify/:useremail',
+    element: (
+      <ProtectedRecoverRoute>
+        <VerifyCode />
+      </ProtectedRecoverRoute>
     ),
   },
   {

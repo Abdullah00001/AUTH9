@@ -1,4 +1,5 @@
 import FindAccountForm from './FindAccountForm';
+import RecoverErrorMessage from './RecoverErrorMessage';
 
 const ForgotPasswordComponent = () => {
   return (
@@ -9,6 +10,7 @@ const ForgotPasswordComponent = () => {
         Enter the email address associated with your account to begin the
         search.
       </h4>
+      <RecoverErrorMessage/>
       <div className='mt-4'>
         <FindAccountForm />
       </div>

@@ -8,7 +8,7 @@ import useRecoverAccountContext from '../../../../hooks/useRecoverAccountContext
 const FindAccountForm = () => {
   const navigate = useNavigate();
   const { setEmailFieldError } = useAuthContext();
-  const { find } = useRecoverAccountContext();
+  const { find, data} = useRecoverAccountContext();
   const [email, setEmail] = useState(null);
   const handleCancel = () => {
     navigate('/auth/login');
@@ -27,6 +27,12 @@ const FindAccountForm = () => {
       find({ email });
     }
   }, [email]);
+  useEffect(()=>{
+    console.log(data)
+    if(data){
+      navigate(`/auth/recover/:${data.email}`)
+    }
+  },[data])
   return (
     <form onSubmit={handleFindSubmit}>
       <Email pl={'pl-0'} />

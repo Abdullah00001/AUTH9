@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
-import ForgotPasswordComponent from '../../features/Authentication/Recover Account/components/ForgotPasswordComponent';
+import AccountFound from '../../features/Authentication/Recover Account/components/AccountFound';
 
-const ForgotPassword = () => {
+const UserFound = () => {
   return (
     <>
       <Helmet>
@@ -9,11 +9,11 @@ const ForgotPassword = () => {
       </Helmet>
       <section>
         <div className='flex h-[80vh] justify-center items-center'>
-          <ForgotPasswordComponent />
+          <AccountFound />
         </div>
       </section>
     </>
   );
 };
 
-export default ForgotPassword;
+export default UserFound;
