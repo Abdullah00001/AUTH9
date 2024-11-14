@@ -55,10 +55,18 @@ router.route('/verify').post(verifyEmail);
 router
   .route('/resend-verification-email')
   .post(resendVerificationEmailController);
-router.route('/forgot-password/find-user').post(findUser);
-router.route('/forgot-password/sent-otp').post(sentForgotPasswordOTP);
-router.route('/forgot-password/verify-otp').post(verifyOTP);
-router.route('/forgot-password/recover-password').post(recoverPassword);
+router
+  .route('/forgot-password/find-user')
+  .post(isLoginUserExist, isVerifiedUser, findUser);
+router
+  .route('/forgot-password/sent-otp')
+  .post(isLoginUserExist, isVerifiedUser, sentForgotPasswordOTP);
+router
+  .route('/forgot-password/verify-otp')
+  .post(isLoginUserExist, isVerifiedUser, verifyOTP);
+router
+  .route('/forgot-password/recover-password')
+  .post(isLoginUserExist, isVerifiedUser, recoverPassword);
 
 /* ================================
 ----------PROTECTED ROUTES---------
