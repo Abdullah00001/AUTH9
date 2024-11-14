@@ -7,6 +7,7 @@ import AppLayout from '../layouts/AppLayout';
 import Home from '../pages/Home/Home';
 import ProtectedAuth from '../components/Protected/ProtectedAuth';
 import ProtectedRoute from '../components/Protected/ProtectedRoute';
+import ForgotPassword from '../pages/Forgot Password/ForgotPassword';
 
 const Routes = createBrowserRouter([
   {
@@ -31,6 +32,14 @@ const Routes = createBrowserRouter([
       <ProtectedVerifyPage>
         <VerifyAccount />
       </ProtectedVerifyPage>
+    ),
+  },
+  {
+    path: '/auth/forgot-password',
+    element: (
+      <ProtectedRoute>
+        <ForgotPassword />
+      </ProtectedRoute>
     ),
   },
   {

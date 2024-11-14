@@ -5,8 +5,13 @@ import Password from '../../components/Password';
 import SubmitButton from '../../components/SubmitButton';
 import resetErrors from '../helper/resetErrors';
 import setErrors from '../helper/setErrors';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
+  const navigate = useNavigate();
+  const handleNavigateForgotPassword = () => {
+    navigate('/auth/forgot-password');
+  };
   const [data, setData] = useState({});
   const {
     loading,
@@ -35,13 +40,21 @@ const LoginForm = () => {
     <form onSubmit={handleLogin}>
       <div className='flex flex-col gap-4'>
         <div>
-          <Email />
+          <Email pl={'pl-2'} />
         </div>
         <div>
           <Password />
         </div>
       </div>
-      <SubmitButton name={'Login'} />
+      <div className='mt-3'>
+        <h3
+          className='text-lg font-semibold text-blue-500 pr-3 text-right cursor-pointer'
+          onClick={handleNavigateForgotPassword}
+        >
+          Forgot Password!
+        </h3>
+      </div>
+      <SubmitButton marginTop={'mt-[10px]'} name={'Login'} />
     </form>
   );
 };

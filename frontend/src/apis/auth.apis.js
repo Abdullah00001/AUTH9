@@ -40,4 +40,22 @@ const loginUser = async userData => {
   }
 };
 
-export { signupUser, verifyEmail, checkAuth, refreshTokens,loginUser };
+const findUser = async userData => {
+  try {
+    return await axiosInstance.post(
+      '/user/forgot-password/find-user',
+      userData,
+    );
+  } catch (error) {
+    throw error;
+  }
+};
+
+export {
+  signupUser,
+  verifyEmail,
+  checkAuth,
+  refreshTokens,
+  loginUser,
+  findUser,
+};

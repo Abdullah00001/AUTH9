@@ -14,7 +14,7 @@ const SignupForm = ({ handleSubmit }) => {
           <LastName />
         </div>
         <div className='w-full'>
-          <Email />
+          <Email pl={'pl-2'} />
         </div>
         <div className='w-full'>
           <Password />
@@ -23,7 +23,7 @@ const SignupForm = ({ handleSubmit }) => {
           <ConfirmPassword />
         </div>
       </div>
-      <SubmitButton name={'Signup'} />
+      <SubmitButton marginTop={'mt-[30px]'} name={'Signup'} />
     </form>
   );
 };
