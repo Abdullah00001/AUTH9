@@ -2,11 +2,13 @@ import { useNavigate } from 'react-router-dom';
 import Email from '../../components/Email';
 import SubmitButton from '../../components/SubmitButton';
 import useAuthContext from '../../../../hooks/useAuthContext';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import useRecoverAccountContext from '../../../../hooks/useRecoverAccountContext';
 
 const FindAccountForm = () => {
   const navigate = useNavigate();
   const { setEmailFieldError } = useAuthContext();
+  const { find } = useRecoverAccountContext();
   const [email, setEmail] = useState(null);
   const handleCancel = () => {
     navigate('/auth/login');
@@ -20,6 +22,11 @@ const FindAccountForm = () => {
     }
     setEmail(email);
   };
+  useEffect(() => {
+    if (email) {
+      find({ email });
+    }
+  }, [email]);
   return (
     <form onSubmit={handleFindSubmit}>
       <Email pl={'pl-0'} />
