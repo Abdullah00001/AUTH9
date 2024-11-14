@@ -46,13 +46,13 @@ const LoginForm = () => {
           <Password />
         </div>
       </div>
-      <div className='mt-3'>
-        <h3
-          className='text-lg font-semibold text-blue-500 pr-3 text-right cursor-pointer'
+      <div className='mt-3 flex justify-end'>
+        <span
+          className='text-lg inline-block font-semibold text-blue-500 pr-3  cursor-pointer'
           onClick={handleNavigateForgotPassword}
         >
           Forgot Password!
-        </h3>
+        </span>
       </div>
       <SubmitButton marginTop={'mt-[10px]'} name={'Login'} />
     </form>

@@ -51,20 +51,44 @@ const findUser = async userData => {
   }
 };
 
-const sentOtp=async userData=>{
+const sentOtp = async userData => {
   try {
-    return await axiosInstance.post('/user/forgot-password/sent-otp',userData)
+    return await axiosInstance.post('/user/forgot-password/sent-otp', userData);
   } catch (error) {
-    throw error
+    throw error;
   }
-}
+};
+
+const verifyOtp = async userData => {
+  try {
+    return await axiosInstance.post(
+      '/user/forgot-password/verify-otp',
+      userData,
+    );
+  } catch (error) {
+    throw error;
+  }
+};
+
+const recoverPassword = async userData => {
+  try {
+    return await axiosInstance.post(
+      '/user/forgot-password/recover-password',
+      userData,
+    );
+  } catch (error) {
+    throw error;
+  }
+};
 
 export {
+  verifyOtp,
   signupUser,
   verifyEmail,
   checkAuth,
   refreshTokens,
   loginUser,
   findUser,
-  sentOtp
+  sentOtp,
+  recoverPassword,
 };

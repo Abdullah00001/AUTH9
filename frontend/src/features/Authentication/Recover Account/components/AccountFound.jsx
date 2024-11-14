@@ -4,7 +4,8 @@ import SubmitButton from '../../components/SubmitButton';
 import { useEffect } from 'react';
 
 const AccountFound = () => {
-  const { data, setData, sentEmail, success } = useRecoverAccountContext();
+  const { data, setData, sentEmail, isAccountFound } =
+    useRecoverAccountContext();
   const navigate = useNavigate();
   const handleNotYou = () => {
     setData(null);
@@ -18,8 +19,8 @@ const AccountFound = () => {
     }
   };
   useEffect(() => {
-    if (data && success) navigate(`/auth/recover/verify/:${data.email}`);
-  }, [success, data]);
+    if (isAccountFound && data) navigate(`/auth/recover/verify/:${data.email}`);
+  }, [isAccountFound, navigate, data]);
   return (
     <div className='border-[1px] border-text rounded-[16px] p-[25px] w-[600px]'>
       <h1 className='text-2xl font-extrabold'>Reset Your Password</h1>
