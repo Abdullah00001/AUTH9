@@ -1,7 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import ErrorMessage from './ErrorMessage';
 import LoginForm from './LoginForm';
 
 const LoginComponent = () => {
+  const navigate = useNavigate();
+  const handleNavigateSignup = () => {
+    navigate('/auth/signup');
+  };
   return (
     <div className='w-[700px] rounded-[16px] border-t-[1px] rounded-r-none rounded-b-none  border-l-[1px] border-white p-[30px]'>
       <div>
@@ -15,7 +20,8 @@ const LoginComponent = () => {
         <LoginForm />
       </div>
       <p className='text-gray-200 font-normal text-[15px] mt-[14px] pl-[3px]'>
-        Not a member yet?
+        Not a member yet?{' '}
+        <span className='cursor-pointer font-bold' onClick={handleNavigateSignup}>Sign Up</span>
       </p>
     </div>
   );

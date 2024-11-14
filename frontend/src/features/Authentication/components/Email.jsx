@@ -1,10 +1,10 @@
 import Input from '../../../components/Input';
 import useAuthContext from '../../../hooks/useAuthContext';
-const Email = () => {
+const Email = ({ pl }) => {
   const { emailFieldError } = useAuthContext();
   return (
     <div className='flex flex-col gap-4 w-full'>
-      <label htmlFor='email ' className='pl-2 text-xl'>
+      <label htmlFor='email ' className={`${pl} text-xl`}>
         Email
       </label>
       <Input

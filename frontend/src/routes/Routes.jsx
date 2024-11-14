@@ -7,6 +7,12 @@ import AppLayout from '../layouts/AppLayout';
 import Home from '../pages/Home/Home';
 import ProtectedAuth from '../components/Protected/ProtectedAuth';
 import ProtectedRoute from '../components/Protected/ProtectedRoute';
+import ForgotPassword from '../pages/Forgot Password/ForgotPassword';
+import UserFound from '../pages/Forgot Password/UserFound';
+import ProtectedRecoverRoute from '../components/Protected/ProtectedRecoverRoute';
+import VerifyCode from '../pages/Forgot Password/VerifyCode';
+import NewPasword from '../pages/Forgot Password/NewPasword';
+import RecoverSuccess from '../pages/Forgot Password/RecoverSuccess';
 
 const Routes = createBrowserRouter([
   {
@@ -31,6 +37,46 @@ const Routes = createBrowserRouter([
       <ProtectedVerifyPage>
         <VerifyAccount />
       </ProtectedVerifyPage>
+    ),
+  },
+  {
+    path: '/auth/forgot-password',
+    element: (
+      <ProtectedRoute>
+        <ForgotPassword />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/auth/recover/:useremail',
+    element: (
+      <ProtectedRecoverRoute>
+        <UserFound />
+      </ProtectedRecoverRoute>
+    ),
+  },
+  {
+    path: '/auth/recover/verify/:useremail',
+    element: (
+      <ProtectedRecoverRoute>
+        <VerifyCode />
+      </ProtectedRecoverRoute>
+    ),
+  },
+  {
+    path: '/auth/recover/password/:userEmail',
+    element: (
+      <ProtectedRecoverRoute>
+        <NewPasword />
+      </ProtectedRecoverRoute>
+    ),
+  },
+  {
+    path: '/auth/recover/password/successful',
+    element: (
+      <ProtectedRecoverRoute>
+        <RecoverSuccess />
+      </ProtectedRecoverRoute>
     ),
   },
   {

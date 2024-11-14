@@ -10,6 +10,9 @@ import { useNavigate } from 'react-router-dom';
 const Signup = () => {
   const navigate = useNavigate();
   const [data, setData] = useState({});
+  const handleNavigateLogin = () => {
+    navigate('/auth/login');
+  };
   const {
     successMessage,
     errorMessage,
@@ -98,7 +101,13 @@ const Signup = () => {
               <SignupForm handleSubmit={handleSubmit}></SignupForm>
             </div>
             <p className='text-gray-200 font-normal text-[15px] mt-[14px] pl-[3px]'>
-              Already Have An Account!
+              Already Have An Account!{' '}
+              <span
+                className='cursor-pointer font-bold'
+                onClick={handleNavigateLogin}
+              >
+                Log In
+              </span>
             </p>
           </div>
         </div>
