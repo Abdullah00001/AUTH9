@@ -3,13 +3,15 @@ import {
   successApiResponse,
   errorApiResponse,
 } from '../../utils/apiResponse.utils.js';
+import { hashPassword } from '../../utils/user.utils.js';
 
 const recoverPassword = async (req, res) => {
   try {
     const { email, password } = req.body;
+    const hashUserPassword =await hashPassword(password);
     await UserModel.findOneAndUpdate(
       { email },
-      { $set: { password } },
+      { $set: { password: hashUserPassword } },
       { new: true },
     );
     return res
