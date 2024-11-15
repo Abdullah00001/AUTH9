@@ -5,13 +5,14 @@ import SubmitButton from '../../components/SubmitButton';
 import { useEffect, useState } from 'react';
 
 const SecurityCodeForm = () => {
-  const { data, setData, verify, isOTPValid } =
+  const { data, setData, verify, isOTPValid,setError } =
     useRecoverAccountContext();
   const [userData, setUserData] = useState(null);
   const [fieldError, setFieldError] = useState(null);
   const navigate = useNavigate();
   const handleSubmit = e => {
     e.preventDefault();
+    setError(null)
     const otp = e.target.otp.value;
     if (otp === '') {
       setFieldError('Please Provide The OTP');

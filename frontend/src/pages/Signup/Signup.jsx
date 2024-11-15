@@ -10,9 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const Signup = () => {
   const navigate = useNavigate();
   const [data, setData] = useState({});
-  const handleNavigateLogin = () => {
-    navigate('/auth/login');
-  };
+
   const {
     successMessage,
     errorMessage,
@@ -25,7 +23,12 @@ const Signup = () => {
     setConfirmPasswordFieldError,
     setIsFormValid,
     loading,
+    setErrorMessage,
   } = useAuthContext();
+  const handleNavigateLogin = () => {
+    setErrorMessage(null);
+    navigate('/auth/login');
+  };
   const handleSubmit = e => {
     e.preventDefault();
     ResetFieldErrors({
@@ -35,6 +38,7 @@ const Signup = () => {
       setPasswordFieldError,
       setConfirmPasswordFieldError,
       setIsFormValid,
+      setErrorMessage,
     });
     SetFieldError({
       e,
@@ -45,6 +49,7 @@ const Signup = () => {
       setConfirmPasswordFieldError,
       setIsFormValid,
     });
+    if (!isFormValid) return;
     if (isFormValid && !loading) {
       const firstName = e.target.firstName.value.toLowerCase();
       const lastName = e.target.lastName.value.toLowerCase();
@@ -52,7 +57,6 @@ const Signup = () => {
       const password = e.target.password.value.toLowerCase();
       setData({ firstName, lastName, email, password });
     }
-    return;
   };
   useEffect(() => {
     if (data.firstName && data.lastName && data.email && data.password) {
@@ -60,7 +64,7 @@ const Signup = () => {
     }
   }, [data]);
   useEffect(() => {
-    if (successMessage) {
+    if (successMessage && isFormValid) {
       toast.success(successMessage);
       const delayNavigate = setTimeout(() => {
         navigate('/auth/verify');
@@ -69,7 +73,7 @@ const Signup = () => {
         clearTimeout(delayNavigate);
       };
     }
-  }, [successMessage, navigate]);
+  }, [successMessage, isFormValid, navigate]);
   return (
     <>
       <Helmet>

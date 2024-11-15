@@ -5,6 +5,7 @@ const ResetFieldErrors = ({
   setPasswordFieldError,
   setConfirmPasswordFieldError,
   setIsFormValid,
+  setErrorMessage
 }) => {
   setFirstNameFieldError(null);
   setLastNameFieldError(null);
@@ -13,6 +14,7 @@ const ResetFieldErrors = ({
   setConfirmPasswordFieldError(null);
   setFirstNameFieldError(null);
   setIsFormValid(null);
+  setErrorMessage(null)
   return
 };
 

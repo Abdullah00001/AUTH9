@@ -5,13 +5,14 @@ import SubmitButton from '../../components/SubmitButton';
 import { useNavigate } from 'react-router-dom';
 
 const SetPasswordForm = () => {
-  const { data, recoverSuccess, setRecoverSuccess, recover } =
+  const { data, recoverSuccess, setRecoverSuccess, recover, setError } =
     useRecoverAccountContext();
   const [password, setPassword] = useState(null);
   const [fieldError, setFieldError] = useState(null);
   const navigate = useNavigate();
   const handleSubmit = e => {
     e.preventDefault();
+    setError(null);
     setFieldError(null);
     setPassword(null);
     setRecoverSuccess(null);
