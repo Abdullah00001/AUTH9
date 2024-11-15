@@ -20,10 +20,16 @@ const LoginForm = () => {
     setEmailFieldError,
     setPasswordFieldError,
     setIsFormValid,
+    setErrorMessage,
   } = useAuthContext();
   const handleLogin = e => {
     e.preventDefault();
-    resetErrors({ setEmailFieldError, setPasswordFieldError, setIsFormValid });
+    resetErrors({
+      setEmailFieldError,
+      setPasswordFieldError,
+      setIsFormValid,
+      setErrorMessage,
+    });
     setErrors({ e, setEmailFieldError, setPasswordFieldError, setIsFormValid });
     if (isFormValid && !loading) {
       const email = e.target.email.value.toLowerCase();

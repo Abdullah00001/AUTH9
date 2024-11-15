@@ -8,14 +8,16 @@ import useRecoverAccountContext from '../../../../hooks/useRecoverAccountContext
 const FindAccountForm = () => {
   const navigate = useNavigate();
   const { setEmailFieldError } = useAuthContext();
-  const { find, data} = useRecoverAccountContext();
+  const { find, data,setError} = useRecoverAccountContext();
   const [email, setEmail] = useState(null);
   const handleCancel = () => {
     navigate('/auth/login');
   };
   const handleFindSubmit = e => {
     e.preventDefault();
+    setError(null)
     setEmailFieldError(null);
+
     const email = e.target.email.value.toLowerCase();
     if (email === '') {
       setEmailFieldError('Please Provide Email');

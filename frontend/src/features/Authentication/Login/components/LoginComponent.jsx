@@ -1,10 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import ErrorMessage from './ErrorMessage';
 import LoginForm from './LoginForm';
+import useAuthContext from '../../../../hooks/useAuthContext';
 
 const LoginComponent = () => {
   const navigate = useNavigate();
+  const { setErrorMessage } = useAuthContext();
   const handleNavigateSignup = () => {
+    setErrorMessage(null);
     navigate('/auth/signup');
   };
   return (
@@ -21,7 +24,12 @@ const LoginComponent = () => {
       </div>
       <p className='text-gray-200 font-normal text-[15px] mt-[14px] pl-[3px]'>
         Not a member yet?{' '}
-        <span className='cursor-pointer font-bold' onClick={handleNavigateSignup}>Sign Up</span>
+        <span
+          className='cursor-pointer font-bold'
+          onClick={handleNavigateSignup}
+        >
+          Sign Up
+        </span>
       </p>
     </div>
   );
