@@ -1,6 +1,6 @@
 {
   "name": "backend",
-  "version": "1.0.0",
+  "version": "0.2.4",
   "description": "Postbook Its Will Be A Social Platform For Muslims.Its Connect People With Emotions.And This Is The Backbone Of The Software",
   "type": "module",
   "main": "index.js",
