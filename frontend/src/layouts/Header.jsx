@@ -1,6 +1,8 @@
+import Navbar from "../features/Navbar/components/Navbar"
+
 const Header = () => {
   return (
-    <div>Header</div>
+    <Navbar/>
   )
 }
 
