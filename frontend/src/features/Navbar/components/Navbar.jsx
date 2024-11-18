@@ -3,7 +3,7 @@ import NavItems from './NavItems';
 
 const Navbar = () => {
   return (
-    <section className='w-full py-[10px] px-[20px] border-b-[2px] border-[text-accent]'>
+    <section className='w-full border-b-[2px] border-[text-accent] h-full'>
       <NavItems />
     </section>
   );
