@@ -8,7 +8,7 @@ const RightNavItem = () => {
   };
   return (
     <div className='relative'>
-      <div onClick={toggleDropdown} className='cursor-pointer'>
+      <div onClick={toggleDropdown} className='cursor-pointer h-full'>
         <RxAvatar className='text-[35px]' />
       </div>
       {isOpen && (

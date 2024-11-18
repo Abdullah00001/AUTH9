@@ -4,9 +4,9 @@ import middleNavIcons from '../helper/navIcons';
 
 const MiddleNavItems = () => {
   return (
-    <div className='flex justify-center items-center gap-[21px]'>
+    <div className='flex justify-center h-full gap-2 items-center '>
       {middleNavIcons.map(icon => (
-        <MiddleNavItem key={icon.id} icon={icon.element} />
+        <MiddleNavItem key={icon.id} icon={icon.element} path={icon.path} />
       ))}
     </div>
   );

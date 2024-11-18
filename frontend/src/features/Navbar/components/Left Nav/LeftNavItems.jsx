@@ -3,7 +3,7 @@ import Logo from './Logo';
 
 const LeftNavItems = () => {
   return (
-    <div className='flex justify-start items-center'>
+    <div className='flex justify-start items-center h-full'>
       <Logo />
     </div>
   );

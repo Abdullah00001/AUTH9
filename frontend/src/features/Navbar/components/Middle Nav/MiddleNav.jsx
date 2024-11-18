@@ -3,7 +3,7 @@ import MiddleNavItems from './MiddleNavItems';
 
 const MiddleNav = () => {
   return (
-    <div className='w-[40%] p-0 m-0 h-full'>
+    <div className='w-[40%] h-full'>
         <MiddleNavItems/>
     </div>
   );
