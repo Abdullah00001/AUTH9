@@ -7,7 +7,10 @@ import {
 const profileController = async (req, res) => {
   try {
     const id = req.decoded.id;
-    const user = await UserModel.findById(id, '-password -refreshToken');
+    const user = await UserModel.findById(
+      id,
+      '-password -refreshToken -otp -otpExpiry -isVerified -__v',
+    );
     console.log();
     return res
       .status(200)
