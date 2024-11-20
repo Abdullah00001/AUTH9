@@ -5,6 +5,7 @@ import {
   loginUser,
   refreshTokens,
   signupUser,
+  UserLogout,
 } from '../apis/auth.apis';
 import { ResetErrorMessage } from '../utils/authProvider.utils';
 
@@ -20,7 +21,8 @@ const AuthProvider = ({ children }) => {
   const [successMessage, setSuccessMessage] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [isFormValid, setIsFormValid] = useState(null);
-  
+  const [isLogout, setIsLogout] = useState(null);
+
   const signup = async userData => {
     setLoading(true);
     ResetErrorMessage({ setErrorMessage, setSuccessMessage });
@@ -58,6 +60,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const login = async userData => {
+    ResetErrorMessage({ setErrorMessage, setSuccessMessage });
     setLoading(true);
     try {
       const response = await loginUser(userData);
@@ -95,8 +98,30 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  const logout = async () => {
+    ResetErrorMessage({ setErrorMessage, setSuccessMessage });
+    setLoading(true);
+    try {
+      const response = await UserLogout();
+      console.log(response);
+      const message = response.data.message;
+      console.log();
+      if (response.status === 200) {
+        console.log(message);
+        setSuccessMessage(message);
+        setIsLogout(true);
+        setUser(null);
+      }
+    } catch (error) {
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     const auth = async () => {
+      if (isLogout) return;
       setLoading(true);
       try {
         const response = await checkAuth();
@@ -107,6 +132,8 @@ const AuthProvider = ({ children }) => {
       } catch (error) {
         const status = error?.status;
         if (status === 401) {
+          if (isLogout) return;
+          if (user === null) return;
           try {
             const response = await refreshTokens();
             const status = response?.status;
@@ -114,7 +141,7 @@ const AuthProvider = ({ children }) => {
               setUser(true);
             }
           } catch (error) {
-            setUser(false);
+            setUser(null);
           }
         }
         setUser(false);
@@ -136,6 +163,7 @@ const AuthProvider = ({ children }) => {
     errorMessage,
     isFormValid,
     login,
+    logout,
     setIsFormValid,
     signup,
     setErrorMessage,

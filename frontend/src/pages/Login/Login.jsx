@@ -4,12 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import useAuthContext from '../../hooks/useAuthContext';
 import toast, { Toaster } from 'react-hot-toast';
 import { useEffect } from 'react';
+import { ResetErrorMessage } from '../../utils/authProvider.utils';
 
 const Login = () => {
+  const { successMessage,setSuccessMessage, setErrorMessage, setUser } = useAuthContext();
   const navigate = useNavigate();
-  const { successMessage, setUser } = useAuthContext();
   useEffect(() => {
     if (successMessage) {
+
       toast.success(successMessage);
       const delayNavigate = setTimeout(() => {
         setUser(true);

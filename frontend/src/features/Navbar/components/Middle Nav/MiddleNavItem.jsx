@@ -7,8 +7,8 @@ const MiddleNavItem = ({ icon, path }) => {
         to={path}
         className={({ isActive }) =>
           `px-[30px] py-[20px] ${
-            isActive ? `h-full border-b-[3px] rounded-br-[0] rounded-bl-[0] hover:bg-none border-blue-400` : ``
-          } h-full flex items-center hover:bg-slate-500 hover:rounded-[6px]`
+            isActive ? `hover:bg-none border-blue-400` : ``
+          }`
         }
       >
         {icon}

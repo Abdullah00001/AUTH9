@@ -81,6 +81,14 @@ const recoverPassword = async userData => {
   }
 };
 
+const UserLogout = async () => {
+  try {
+    return await axiosInstance.patch('/user/logout', {});
+  } catch (error) {
+    throw error;
+  }
+};
+
 export {
   verifyOtp,
   signupUser,
@@ -91,4 +99,5 @@ export {
   findUser,
   sentOtp,
   recoverPassword,
+  UserLogout,
 };

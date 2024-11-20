@@ -13,6 +13,9 @@ import ProtectedRecoverRoute from '../components/Protected/ProtectedRecoverRoute
 import VerifyCode from '../pages/Forgot Password/VerifyCode';
 import NewPasword from '../pages/Forgot Password/NewPasword';
 import RecoverSuccess from '../pages/Forgot Password/RecoverSuccess';
+import Friends from '../pages/Friends/Friends';
+import Profile from '../pages/Profile/Profile';
+import Settings from '../pages/Settings/Settings';
 
 const Routes = createBrowserRouter([
   {
@@ -90,6 +93,18 @@ const Routes = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
+      },
+      {
+        path: '/profile',
+        element: <Profile />,
+      },
+      {
+        path: '/friends',
+        element: <Friends />,
+      },
+      {
+        path: '/settings',
+        element: <Settings />,
       },
     ],
   },
