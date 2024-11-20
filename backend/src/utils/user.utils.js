@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import { saltRounds } from '../constants.js';
 const cleanUserData = user => {
-  const { password, refreshToken,otp,otpExpiry, ...cleanedData } = user.toObject();
+  const { password, refreshToken,otp,otpExpiry,isVerified, ...cleanedData } = user.toObject();
   return cleanedData;
 };
 
